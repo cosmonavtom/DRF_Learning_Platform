@@ -49,10 +49,11 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_simplejwt',
     'corsheaders',
-    'drf-yasg',
+    'drf_yasg',
     'redis',
 
     # project apps
+    'users',
 ]
 
 MIDDLEWARE = [
