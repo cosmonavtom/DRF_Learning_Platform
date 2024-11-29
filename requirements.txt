@@ -1,4 +1,5 @@
 mssql-django
+django
 python-dotenv
 djangorestframework
 pillow
