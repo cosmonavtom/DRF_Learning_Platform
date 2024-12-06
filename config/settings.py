@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     # project apps
     'users',
+    'sections',
 ]
 
 MIDDLEWARE = [
