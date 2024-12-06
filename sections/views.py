@@ -9,7 +9,7 @@ from sections.models import Section, SectionContent, Tests
 from sections.permissions import IsModerator
 from sections.serializers.section_serializers import SectionListSerializer, SectionSerializer
 from sections.serializers.section_content_searializers import SectionContentListSerializer, SectionContentSerializer
-from sections.serializers.tests_serilizers import TestSerializer, TestQuestionSerializer
+# from sections.serializers.tests_serializers import TestSerializer, TestQuestionSerializer
 from sections.paginators import SectionPaginator, SectionContentPaginator, TestsPaginator
 
 
@@ -72,22 +72,22 @@ class ContentDestroyAPIView(DestroyAPIView):
     queryset = SectionContent.objects.all()
     pagination_classes = [IsAuthenticated, IsAdminUser|IsModerator]
 
-
-class TestListAPIView(ListAPIView):
-    serializer_class = TestSerializer
-    queryset = Tests.objects.all()
-    permission_classes = [IsAuthenticated]
-
-
-class TestQuestionRetrieveAPIView(RetrieveAPIView):
-    serializer_class = TestQuestionSerializer
-    queryset = Tests.objects.all()
-
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request, *args, **kwargs):
-        answers = [tests.answer for test in Tests.objects.all()]
-        answer = answers[self.kwargs.get('pk') - 1].lower()
-        user_answer = request.data.get('user_answer').lower()
-        is_correct = user_answer == answer
-        return Response({'is_correct': is_correct})
+#
+# class TestListAPIView(ListAPIView):
+#     serializer_class = TestSerializer
+#     queryset = Tests.objects.all()
+#     permission_classes = [IsAuthenticated]
+#
+#
+# class TestQuestionRetrieveAPIView(RetrieveAPIView):
+#     serializer_class = TestQuestionSerializer
+#     queryset = Tests.objects.all()
+#
+#     permission_classes = [IsAuthenticated]
+#
+#     def post(self, request, *args, **kwargs):
+#         answers = [tests.answer for test in Tests.objects.all()]
+#         answer = answers[self.kwargs.get('pk') - 1].lower()
+#         user_answer = request.data.get('user_answer').lower()
+#         is_correct = user_answer == answer
+#         return Response({'is_correct': is_correct})
