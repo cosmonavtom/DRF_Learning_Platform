@@ -14,8 +14,8 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True,verbose_name='email')
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.MEMBER)
-    first_name = models.CharField(max_length=150, verbose_name='First Name',default="Anonymous")
-    last_name = models.CharField(max_length=150, verbose_name='Last Name', default="Anonymous")
+    first_name = models.CharField(max_length=150, verbose_name='First Name', **NULLABLE)
+    last_name = models.CharField(max_length=150, verbose_name='Last Name', **NULLABLE)
     phone = models.CharField(max_length=35, verbose_name='Phone number', **NULLABLE)
     is_active = models.BooleanField(default=True, verbose_name='Active')
 
