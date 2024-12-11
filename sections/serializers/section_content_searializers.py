@@ -18,4 +18,4 @@ class SectionContentListSerializer(ModelSerializer):
 
     class Meta:
         model = SectionContent
-        fields = ('id', 'section', 'title' )
+        fields = ('id', 'sections', 'title' )

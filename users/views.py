@@ -3,7 +3,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from users.serializers.user_serializers import UserCreateSerializer, UserUpdateSerializer, UserSerializer, \
-    UserToTokenObtainPairSerializer
+    UserTokenObtainPairSerializer
 from users.models import User
 
 
@@ -40,7 +40,7 @@ class UserDestroyAPIView(DestroyAPIView):
 
 
 class UserTokenObtainParView(TokenObtainPairView):
-    serializer_class = UserToTokenObtainPairSerializer
+    serializer_class = UserTokenObtainPairSerializer
 
 
 
