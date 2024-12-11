@@ -22,7 +22,7 @@ class SectionListAPIView(ListAPIView):
 
 class SectionCreateAPIView(CreateAPIView):
     serializer_class = SectionSerializer
-    pagination_classes = [IsAuthenticated, IsAdminUser | IsModerator]
+    permission_classes = [IsAuthenticated, IsAdminUser | IsModerator]
 
 
 class SectionRetrieveAPIView(RetrieveAPIView):
@@ -70,7 +70,7 @@ class ContentUpdateAPIView(UpdateAPIView):
 class ContentDestroyAPIView(DestroyAPIView):
     serializer_class = SectionContentSerializer
     queryset = SectionContent.objects.all()
-    pagination_classes = [IsAuthenticated, IsAdminUser|IsModerator]
+    permission_classes = [IsAuthenticated, IsAdminUser|IsModerator]
 
 #
 # class TestListAPIView(ListAPIView):
