@@ -39,7 +39,7 @@ class UserDestroyAPIView(DestroyAPIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
 
 
-class UserTokenObtainParView(TokenObtainPairView):
+class UserTokenObtainPairView(TokenObtainPairView):
     serializer_class = UserTokenObtainPairSerializer
 
 
