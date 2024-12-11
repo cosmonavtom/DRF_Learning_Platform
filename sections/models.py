@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import NULLABLE
 
+
 class Section(models.Model):
     """Добавлена модель Раздел"""
     title = models.CharField(max_length=150, verbose_name='Title')
@@ -14,8 +15,8 @@ class Section(models.Model):
         verbose_name_plural = 'Sections'
         ordering = ['id']
 
-class SectionContent(models.Model):
 
+class Content(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE, verbose_name='Section')
     title = models.CharField(max_length=150, verbose_name='Title')
     content = models.TextField(verbose_name='Content')
@@ -24,15 +25,16 @@ class SectionContent(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'SectionContent'
-        verbose_name_plural = 'SectionContent'
+        verbose_name = 'Content'
+        verbose_name_plural = 'Content'
         ordering = ['id']
+
 
 class Tests(models.Model):
     test_section = models.ForeignKey(Section, on_delete=models.CASCADE, verbose_name="Test section")
     description = models.TextField(verbose_name='Test description', **NULLABLE)
     question = models.TextField(verbose_name='Question', **NULLABLE)
-    answers = models.TextField(max_length=40,verbose_name='Answer', **NULLABLE)
+    answer = models.CharField(max_length=40, verbose_name='Answer', **NULLABLE)
 
     def __str__(self):
         return f"Тест по курсу {self.test_section.title}"

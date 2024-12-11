@@ -6,7 +6,7 @@ class SectionPaginator(PageNumberPagination):
     page_query_param = 'page_size'
     max_page_size = 10
 
-class SectionContentPaginator(SectionPaginator):
+class ContentPaginator(SectionPaginator):
     page_size = 10
 
 class TestsPaginator(SectionPaginator):
