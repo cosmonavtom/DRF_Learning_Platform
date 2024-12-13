@@ -1,3 +1,4 @@
+from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 
@@ -16,13 +17,15 @@ class SectionTestCase(APITestCase):
             description='test_description'
         )
 
+
+
     def test_section_create(self):
         data = {
             'title': 'test_section_create',
             'description': 'test_section_description_create'
         }
-        response = self.client.post('/section/create', data=data)
-        # print(response.json())
+        response = self.client.post('/section/create/', data=data)
+        print(response.json())
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.json()['title'], 'test_section_create')
 
@@ -44,13 +47,14 @@ class SectionTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json()['results'][0]['title'], 'test_section')
 
+
     def test_section_update(self):
         data = {
             'title': 'test_section_put',
             'description': 'test_description_put',
         }
-        response = self.client.get('/section/6/update', data=data)
-        print(response.json())
+        response = self.client.get('/section/6/update/', data=data)
+        # print(response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json()['title'], 'test_section_put')
         self.assertEqual(response.json()['description'], 'test_description_put')
