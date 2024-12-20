@@ -13,7 +13,7 @@ class UserTestCase(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
 
     def test_user_delete(self):
-        response = self.client.delete('/users/16/delete')
+        response = self.client.delete('/users/16/delete/')
         print(response)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
