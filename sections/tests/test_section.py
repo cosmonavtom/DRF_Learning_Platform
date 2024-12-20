@@ -53,8 +53,8 @@ class SectionTestCase(APITestCase):
             'title': 'test_section_put',
             'description': 'test_description_put',
         }
-        response = self.client.get('/section/6/update/', data=data)
-        # print(response.json())
+        response = self.client.put(f'/section/{self.test_section.id}/update/', data=data)
+        print(response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json()['title'], 'test_section_put')
         self.assertEqual(response.json()['description'], 'test_description_put')
